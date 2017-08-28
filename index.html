@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Lobster+Two|PT+Sans" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/style.css">
+	<title>Trashy Movie Night</title> 
+</head>
+<body>
+	<!-- Beginning of header -->
+	<header>
+		<div class="wrapper">
+			<h1>Trashy Movie Night</h1>
+			<h2>Let's make tonight...a night to forget</h2>
+			<form action="">
+				<div class="userMovieYear"> 
+					<input type="number" name="userMovieYear__final" placeholder="Please enter a movie year" class="no-spinners"  required>
+				</div>
+			</form>
+		</div>
+	</header>
+	<!-- Beginning of main section -->
+	<main>
+		<div class="wrapper">
+			<section id="movieResults">
+			</section>
+			<section id="selectedResults">
+			</section>
+		</div>
+	</main>
+	<!-- beginning of footer -->
+	<footer>
+		<div class="wrapper">
+			<section class="credits">
+				<p>&copy; 2017 Jon Kwok || The Movie Database (TMDb) API & LCBO API</p>
+			</section>
+		</div>
+	</footer>
+	<!-- jQuery cdn -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- script.js -->
+	<script src="scripts/script.js"></script>
+</body>
+</html>
