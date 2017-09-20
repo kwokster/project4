@@ -8,12 +8,13 @@ trashyApp.lcboKey = 'MDo5ZmU3YTdkYy04ODIzLTExZTctYWQ4NS0xZjBjYjgwNGFhNWM6NFNGeGF
 trashyApp.getMovieYear = () => {
 	$('form').on('submit', function(e) {
 		e.preventDefault();
+		$(".movieResults").removeClass("hidden");
 		let userYearChoice = $('input[name=userMovieYear__final]').val();
 		if(userYearChoice < 1890 || userYearChoice > 2017) {
 			alert('This is not a valid movie year. Please pick again.');
 		} else {
 			$('html, body').animate({
-			scrollTop: $('#movieResults').offset().top
+			scrollTop: $('.movieResults').offset().top
 			}, 1000);
 		trashyApp.getMovieInfo(userYearChoice);
 		}	
@@ -23,39 +24,40 @@ trashyApp.getMovieYear = () => {
 //gets movie information by user's year input and sort it by user ratings from lowest to highest
 trashyApp.getMovieInfo = (userYearChoice) => {
 	$.ajax({
-		url: 'https://api.themoviedb.org/3/discover/movie/',
+		url: 'https://api.themoviedb.org/3/discover/movie',
 		method: 'GET',
 		dataType: 'jsonp',
 		data: {
 			api_key: trashyApp.movieKey,
 			primary_release_year: userYearChoice,
 			sort_by: 'vote_average.asc',
-			vote_average_lte: 3.0,
 			include_adult: false
 		}
 	}).then((res) => {
 		let resInfo = res.results;
 		trashyApp.displayMovie(resInfo);
+	}).fail((err) => {
+		alert("Unfortunately, no movies can be found right now. Please try again later!");
 	});
 }
 
-//display 6 movie options on the screen 
+//display movie options on the screen 
 trashyApp.displayMovie = (resInfo) => {
-	$('#movieResults').empty();  
+	$('.movieResults').empty();  
 	resInfo.forEach((movie) => {
 		if(movie.poster_path !== null && movie.overview !== '') {
 			//creating h2 for description
-			let movWords = $('<h2>').text('Now playing:')
+			let movWords = $('<h3>').text('Click to choose:')
 			// creating h2 for movie title
 			let movTitle = $('<h2>').text(movie.title);
 			// creating img for movie poster
-			let movImage = $('<img>').attr('src', `https://image.tmdb.org/t/p/w500${movie.poster_path}`);
+			let movImage = $('<img>').attr('src', `https://image.tmdb.org/t/p/w500${movie.poster_path}`);//*********change photos to w185 for mobile
 			// creating p for movie description
 			let movDescript = $('<p>').text(movie.overview);
 			// creating div called movieSelect and appending the previous elements into it
 			let movContainer = $('<div>').addClass('movieSelect').append(movWords, movTitle, movImage, movDescript); 
 			//appending the information into the movie results section
-			$('#movieResults').append(movContainer); 
+			$('.movieResults').append(movContainer); 
 			trashyApp.clickedMovie(movContainer);
 		}
 	});
@@ -65,8 +67,10 @@ trashyApp.displayMovie = (resInfo) => {
 trashyApp.clickedMovie = (movContainer) => {
 	let movClicked = movContainer[0];
 	$(movContainer).on('click', () => {
-		$('#movieResults').fadeOut(1000, () => {
-			$('#selectedResults').hide().append(movClicked).fadeIn(1000, trashyApp.getWineInfo());
+		$(".selectedResults").removeClass("hidden");
+		$("header").addClass("hidden");
+		$('.movieResults').fadeOut(1000, () => {
+			$('.selectedResults').hide().append(movClicked).fadeIn(1000, trashyApp.getWineInfo());
 		});
 		$(movContainer).off('click');
 	});
@@ -109,10 +113,18 @@ trashyApp.displayWineInfo = (randomWine) => {
 	let wineVolume = $('<p>').text(`${randomWine.volume_in_milliliters} mL bottle`);
 	// creating h3 for wine price
 	let winePrice = $('<h3>').text(`$${dollarPrice}`);
+	//reset button
+	let resetButton = $('<button>').text('Choose another movie!').addClass("resetButton");
+	// reload page 
+	let reloadPage = () => {
+		window.location.reload();
+	};
 	// creating div called wineSelect and appending the previous elements into it
 	let wineContainer = $('<div>').addClass('wineSelect').append(wineWords, wineName, wineImage, wineVolume, winePrice); 
 	//appending the information into the results section
-	$('#selectedResults').append(wineContainer); 
+	$('.selectedResults').append(wineContainer); 
+	$('.selectedResults').append(resetButton);
+	$(".resetButton").on("click", reloadPage);
 }
 
 
@@ -125,3 +137,5 @@ trashyApp.init = () => {
 $(function () {
 	trashyApp.init();
 });
+
+

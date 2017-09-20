@@ -1,0 +1,37 @@
+.movieResults {
+	padding-top: 5rem;
+	.movieSelect {
+		background: white;
+		margin-bottom: 2rem;
+		width: calc(33.33% - 20px);
+		transition: all .3s ease;
+		@include respond-to("large") {
+			width: calc(50% - 20px);
+		}
+		@include respond-to("medium") {
+			width: calc(50% - 20px);
+		}
+		@include respond-to("small") {
+			width: 100%;
+		}
+
+		img {
+			height: 350px;
+			padding: 2rem 0;
+		}
+		h2 {
+			font-size: 30px;
+			padding-bottom: 2rem;
+		}
+		h3 {
+			font-size: 20px;
+			padding-bottom: 2rem;
+		}
+		p {
+			padding-bottom: 1rem;
+		}
+	}
+}
+.movieSelect:hover, .movieSelect:active, .wineSelect:hover, .movieSelect.active {
+	box-shadow: 0 7px 4px #777;
+}

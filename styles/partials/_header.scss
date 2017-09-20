@@ -1,0 +1,83 @@
+header {
+	font-family: 'Lobster Two', cursive;
+	color: #ded585;
+	h1 {
+		font-size: 10rem;
+		@include respond-to("large") {
+			font-size: 8rem;
+		}
+		@include respond-to("medium") {
+			font-size: 5.8rem;
+			padding-top: 4rem;
+		}
+		@include respond-to("small") {
+			font-size: 3.9rem;
+		}
+
+
+	}
+	h2 {
+		font-size: 6.18rem;
+		padding-bottom: 5rem;
+		@include respond-to("large") {
+			font-size: 4rem;
+			padding-top: 1rem;
+		}
+		@include respond-to("medium") {
+			font-size: 2.8rem;
+			padding-top: 1rem;
+		}
+		@include respond-to("small") {
+			font-size: 2rem;
+			padding-top: 1rem;
+		}
+
+
+	}
+	input {
+		width: 50%;
+		padding: 2rem;
+		margin-bottom: 4rem;
+		font-size: 3rem;
+		border-radius: 0.4rem;
+		outline: transparent;
+		@include respond-to("large") {
+			width: 75%
+		}
+		@include respond-to("medium") {
+			width: 100%;
+			font-size: 1.8rem;
+		}
+		@include respond-to("small") {
+			width: 100%;
+			font-size: 1.8rem;
+		}
+	} 
+}
+
+.userMovieYear {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+header input[type="submit"] {
+	border-radius: 8px;
+	border: 1px solid rgba(91, 79, 79, 0.4);
+	background-color: #ded585;
+	width: 30%;
+	margin-bottom: 0;
+	@include respond-to("small") {
+		width: 100%;
+	}
+}
+
+.no-spinners {
+  -moz-appearance:textfield;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}

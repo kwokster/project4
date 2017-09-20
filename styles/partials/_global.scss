@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	background: url('../assets/background.jpg') no-repeat center;
+	background: linear-gradient(rgba(2,2,2,.6), rgba(2,2,2,.6)), url('../assets/background.jpg') no-repeat center;
 	background-size: cover;
 	font-size: 1.618rem;
 	font-family: 'PT Sans', sans-serif;
@@ -20,7 +20,7 @@ img {
 	max-width: 100%;
 }
 
-header, #movieResults, #selectedResults {
+header, .movieResults, .selectedResults {
 	min-height: 100vh;
 	display: flex;
 	flex-wrap: wrap;
@@ -29,108 +29,15 @@ header, #movieResults, #selectedResults {
 	justify-content: space-between;
 }
 
-// header
-header {
-	font-family: 'Lobster Two', cursive;
-	color: cornsilk;
-	h1 {
-		font-size: 10rem;
-	}
-	h2 {
-		font-size: 6.18rem;
-		padding-bottom: 5rem;
-	}
-	input {
-		width: 100%;
-		padding: 2rem;
-		font-size: 3rem;
-		border-radius: 0.4rem;
-	} 
+.hidden {
+	display: none;
 }
 
-.no-spinners {
-  -moz-appearance:textfield;
-}
-
-.no-spinners::-webkit-outer-spin-button,
-.no-spinners::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-}
-
-
-// movie results section
-
-#movieResults {
-	.movieSelect {
-		background: white;
-		border-radius: 2.5rem;
-		padding: 2rem;
-		margin-bottom: 2rem;
-		width: calc(33.33% - 20px);
-		transition: all .3s ease;
-	}
-}
-.movieSelect:hover, .movieSelect:active, .wineSelect:hover, .movieSelect.active {
-	box-shadow: 0 7px 4px #777;
-}
-
-// selected results section
-#selectedResults {
-	.movieSelect {
-		width: calc(50% - 20px);
-		margin-bottom: 0;
-	}
-} 
-
-.wineSelect {
-	background: white;
-	border-radius: 2.5rem;
-	width: calc(50% - 20px);
-	padding: 2rem;
-	h2:first-child {
-		text-transform: uppercase;
-		padding-bottom: 1rem;
-	}
-}	
 
 footer {
 	color: white;
 	text-align: center;
+	padding-top: 1rem;
 }
 
-// /* Landscape phone to portrait tablet */
-@media (max-width: 768px) {
-		header {
-			h1 {
-				font-size: 9rem;
-			}
-		}
-}
 
-// /* Landscape phones and down */
-@media (max-width: 480px) {
-	header {
-		h1 {
-			font-size: 9rem;
-		}
-		h2 {
-			font-size: 3rem;
-		}
-	}
-	header, #movieResults, #selectedResults {
-		flex-direction: column;
-	}
-	.movieSelect {
-		width: 100%;
-	}
-	#selectedResults {
-		.movieSelect {
-			width: 100%;
-			margin-bottom: 2rem;
-		} 
-		.wineSelect {
-		width: 100%;
-		}
-	}
-
-}

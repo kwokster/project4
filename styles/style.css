@@ -141,7 +141,10 @@ html {
   font-size: 62.5%; }
 
 body {
-  background: url("../assets/background.jpg") no-repeat center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(2, 2, 2, 0.6)), to(rgba(2, 2, 2, 0.6))), url("../assets/background.jpg") no-repeat center;
+  background: -webkit-linear-gradient(rgba(2, 2, 2, 0.6), rgba(2, 2, 2, 0.6)), url("../assets/background.jpg") no-repeat center;
+  background: -o-linear-gradient(rgba(2, 2, 2, 0.6), rgba(2, 2, 2, 0.6)), url("../assets/background.jpg") no-repeat center;
+  background: linear-gradient(rgba(2, 2, 2, 0.6), rgba(2, 2, 2, 0.6)), url("../assets/background.jpg") no-repeat center;
   background-size: cover;
   font-size: 1.618rem;
   font-family: 'PT Sans', sans-serif; }
@@ -154,7 +157,7 @@ body {
 img {
   max-width: 100%; }
 
-header, #movieResults, #selectedResults {
+header, .movieResults, .selectedResults {
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -173,19 +176,91 @@ header, #movieResults, #selectedResults {
   -ms-flex-pack: justify;
   justify-content: space-between; }
 
+.hidden {
+  display: none; }
+
+footer {
+  color: white;
+  text-align: center;
+  padding-top: 1rem; }
+
 header {
   font-family: 'Lobster Two', cursive;
-  color: cornsilk; }
+  color: #ded585; }
   header h1 {
     font-size: 10rem; }
+    @media (min-width: 769px) {
+      header h1 {
+        font-size: 8rem; } }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 5.8rem;
+        padding-top: 4rem; } }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 3.9rem; } }
   header h2 {
     font-size: 6.18rem;
     padding-bottom: 5rem; }
+    @media (min-width: 769px) {
+      header h2 {
+        font-size: 4rem;
+        padding-top: 1rem; } }
+    @media (max-width: 768px) {
+      header h2 {
+        font-size: 2.8rem;
+        padding-top: 1rem; } }
+    @media (max-width: 480px) {
+      header h2 {
+        font-size: 2rem;
+        padding-top: 1rem; } }
   header input {
-    width: 100%;
+    width: 50%;
     padding: 2rem;
+    margin-bottom: 4rem;
     font-size: 3rem;
-    border-radius: 0.4rem; }
+    border-radius: 0.4rem;
+    outline: transparent; }
+    @media (min-width: 769px) {
+      header input {
+        width: 75%; } }
+    @media (max-width: 768px) {
+      header input {
+        width: 100%;
+        font-size: 1.8rem; } }
+    @media (max-width: 480px) {
+      header input {
+        width: 100%;
+        font-size: 1.8rem; } }
+
+.userMovieYear {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+header input[type="submit"] {
+  border-radius: 8px;
+  border: 1px solid rgba(91, 79, 79, 0.4);
+  background-color: #ded585;
+  width: 30%;
+  margin-bottom: 0; }
+  @media (max-width: 480px) {
+    header input[type="submit"] {
+      width: 100%; } }
 
 .no-spinners {
   -moz-appearance: textfield; }
@@ -194,56 +269,83 @@ header {
 .no-spinners::-webkit-inner-spin-button {
   -webkit-appearance: none; }
 
-#movieResults .movieSelect {
-  background: white;
-  border-radius: 2.5rem;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  width: calc(33.33% - 20px);
-  -webkit-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease; }
+.movieResults {
+  padding-top: 5rem; }
+  .movieResults .movieSelect {
+    background: white;
+    margin-bottom: 2rem;
+    width: calc(33.33% - 20px);
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease; }
+    @media (min-width: 769px) {
+      .movieResults .movieSelect {
+        width: calc(50% - 20px); } }
+    @media (max-width: 768px) {
+      .movieResults .movieSelect {
+        width: calc(50% - 20px); } }
+    @media (max-width: 480px) {
+      .movieResults .movieSelect {
+        width: 100%; } }
+    .movieResults .movieSelect img {
+      height: 350px;
+      padding: 2rem 0; }
+    .movieResults .movieSelect h2 {
+      font-size: 30px;
+      padding-bottom: 2rem; }
+    .movieResults .movieSelect h3 {
+      font-size: 20px;
+      padding-bottom: 2rem; }
+    .movieResults .movieSelect p {
+      padding-bottom: 1rem; }
 
 .movieSelect:hover, .movieSelect:active, .wineSelect:hover, .movieSelect.active {
   -webkit-box-shadow: 0 7px 4px #777;
   box-shadow: 0 7px 4px #777; }
 
-#selectedResults .movieSelect {
-  width: calc(50% - 20px);
-  margin-bottom: 0; }
+.selectedResults {
+  padding: 2rem; }
+  .selectedResults .movieSelect {
+    background: white;
+    width: calc(50% - 20px);
+    margin-bottom: 0;
+    padding: 2rem 0; }
+    @media (max-width: 480px) {
+      .selectedResults .movieSelect {
+        width: 100%; } }
+    .selectedResults .movieSelect h3 {
+      display: none; }
+    .selectedResults .movieSelect h2 {
+      padding-bottom: 1rem; }
+  .selectedResults .resetButton {
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid rgba(91, 79, 79, 0.4);
+    background-color: #ded585;
+    width: 50%;
+    font-family: 'Lobster Two', cursive;
+    margin-top: 3rem;
+    font-size: 40px;
+    padding: 1rem; }
+    @media (min-width: 769px) {
+      .selectedResults .resetButton {
+        width: 55%; } }
+    @media (max-width: 768px) {
+      .selectedResults .resetButton {
+        width: 62%; } }
+    @media (max-width: 480px) {
+      .selectedResults .resetButton {
+        width: 100%;
+        font-size: 2.5rem; } }
 
 .wineSelect {
   background: white;
-  border-radius: 2.5rem;
   width: calc(50% - 20px);
   padding: 2rem; }
+  @media (max-width: 480px) {
+    .wineSelect {
+      width: 100%;
+      margin-top: 2rem; } }
   .wineSelect h2:first-child {
     text-transform: uppercase;
     padding-bottom: 1rem; }
-
-footer {
-  color: white;
-  text-align: center; }
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 9rem; } }
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 9rem; }
-  header h2 {
-    font-size: 3rem; }
-  header, #movieResults, #selectedResults {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-  .movieSelect {
-    width: 100%; }
-  #selectedResults .movieSelect {
-    width: 100%;
-    margin-bottom: 2rem; }
-  #selectedResults .wineSelect {
-    width: 100%; } }
